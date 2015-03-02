@@ -54,11 +54,11 @@ var Generator = yeoman.generators.Base.extend({
 	},
 
 	projectfiles: function () {
-		this.copy('./.editorconfig', '.editorconfig');
-		this.copy('./.jshintrc', '.jshintrc');
-		this.copy('./.bowerrc', '.bowerrc');
-		this.copy('./.gitignore', '.gitignore');
-		this.copy('./.gitattributes', '.gitattributes');
+		this.copy('./_editorconfig', '.editorconfig');
+		this.copy('./_jshintrc', '.jshintrc');
+		this.copy('./_bowerrc', '.bowerrc');
+		this.copy('./_gitignore', '.gitignore');
+		this.copy('./_gitattributes', '.gitattributes');
 	}
 });
 

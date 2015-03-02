@@ -1,14 +1,36 @@
 {
-  "name": "gulp-project",
-  "version": "1.0.41",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Christian Blaschke <mail@platdesign.de>",
+  "name": "generator-pd-project",
+  "version": "0.1.0",
+  "description": "Generator for platdesign projects",
   "license": "MIT",
+  "main": "app/index.js",
+  "repository": "platdesign/generator-pd-project",
+  "author": {
+    "name": "Christian Blaschke",
+    "email": "mail@platdesign.de",
+    "url": "https://github.com/platdesign"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "chalk": "~0.4.0",
+    "yeoman-generator": "~0.16.0",
+    "yosay": "^0.1.0"
+  },
   "devDependencies": {
-    "gulp": "^3.8.10"
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
   }
 }

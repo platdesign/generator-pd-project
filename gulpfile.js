@@ -1,25 +1,9 @@
 'use strict';
 
-global.utils = require('./gulp/utils');
+var gulp = require('gulp');
 
-global.config = {
-	__dirname: __dirname,
-
-	js: {
-		src: './src/js',
-		dest: './dist/js'
-	},
-
-	css: {
-		src: './src/scss',
-		dest: './dist/css'
-	},
-
-	gfx: {
-		src: './src/gfx',
-		dest: './dist/gfx'
-	}
-};
+require('gulp-framework')(gulp, {
 
 
-require('gulp-task-loader')('gulp/tasks');
+
+});

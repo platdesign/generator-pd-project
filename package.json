@@ -1,6 +1,6 @@
 {
   "name": "generator-pd-project",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Generator for platdesign projects",
   "license": "MIT",
   "main": "app/index.js",

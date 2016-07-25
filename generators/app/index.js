@@ -1,18 +1,14 @@
 'use strict';
-//var util = require('util');
-//var path = require('path');
-var yeoman = require('yeoman-generator');
+var Base = require('yeoman-generator').Base;
 var yosay = require('yosay');
-//var chalk = require('chalk');
 
 
-var Generator = yeoman.generators.Base.extend({
+module.exports = Base.extend({
 	init: function () {
 		this.appname = this.appname.replace(/\s+/g, '-');
 	},
 
-	askFor: function () {
-		var done = this.async();
+	prompting: function () {
 
 		// Have Yeoman greet the user.
 		this.log(yosay('Platdesign project'));
@@ -20,46 +16,50 @@ var Generator = yeoman.generators.Base.extend({
 		var prompts = [
 			{
 				type: 'input',
-				name: 'projectName',
+				name: 'appname',
 				message: 'Your project name',
 				default: this.appname
 			},
 			{
 				type: 'input',
-				name: 'projectDescription',
+				name: 'appdesc',
 				message: 'Describe your project',
 				default: 'A project by platdesign.de'
 			},
 			{
 				type: 'input',
-				name: 'author',
+				name: 'appauthor',
 				message: 'Who is the author?',
 				default: 'Christian Blaschke <mail@platdesign.de>'
 			}
 		];
 
-		this.prompt(prompts, function (props) {
-			this.appname = props.projectName;
-			this.appdesc = props.projectDescription;
-			this.appauthor = props.author;
-
-			done();
-		}.bind(this));
+		return this.prompt(prompts).then(function (props) {
+      // To access props later use this.props.someAnswer;
+      this.props = props;
+    }.bind(this));
 	},
 
-	app: function () {
-		this.template('_package.json', 'package.json');
-		this.template('_bower.json', 'bower.json');
-		this.template('_README.md', 'README.md');
+	writing: function () {
+
+		this.fs.copyTpl(
+			this.templatePath('_package.json'),
+			this.destinationPath('package.json'),
+			this.props
+		);
+
+		this.fs.copyTpl(
+			this.templatePath('_README.md'),
+			this.destinationPath('README.md'),
+			this.props
+		);
+
 	},
 
 	projectfiles: function () {
 		this.copy('./_editorconfig', '.editorconfig');
 		this.copy('./_jshintrc', '.jshintrc');
-		this.copy('./_bowerrc', '.bowerrc');
 		this.copy('./_gitignore', '.gitignore');
 		this.copy('./_gitattributes', '.gitattributes');
 	}
 });
-
-module.exports = Generator;

@@ -1,8 +1,0 @@
-{
-  "name": "<%= appname %>",
-  "description": "<%= appdesc %>",
-  "author": "<%= appauthor %>",
-  "version": "0.0.0",
-  "dependencies": {}
-}
-

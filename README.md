@@ -17,8 +17,6 @@ Opinionated yo generator to create a new project.
 **Creates files:**
 
 - `package.json`
-- `bower.json`
-- `.bowerrc`
 - `.gitignore`
 - `.gitattributes`
 - `.editorconfig`

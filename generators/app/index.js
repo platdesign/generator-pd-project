@@ -1,19 +1,25 @@
 'use strict';
-var Base = require('yeoman-generator').Base;
-var yosay = require('yosay');
+const Generator = require('yeoman-generator');
+const yosay = require('yosay');
 
 
-module.exports = Base.extend({
-	init: function () {
+module.exports = class PdProjectGenerator extends Generator {
+
+	constructor(args, opts) {
+		super(...arguments);
+	}
+
+	initializing() {
 		this.appname = this.appname.replace(/\s+/g, '-');
-	},
+		this.spawnCommandSync('git', ['init', '--quiet']);
+	}
 
-	prompting: function () {
+	prompting() {
 
 		// Have Yeoman greet the user.
 		this.log(yosay('Platdesign project'));
 
-		var prompts = [
+		let prompts = [
 			{
 				type: 'input',
 				name: 'appname',
@@ -34,13 +40,16 @@ module.exports = Base.extend({
 			}
 		];
 
-		return this.prompt(prompts).then(function (props) {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    }.bind(this));
-	},
+		return this.prompt(prompts)
+		// To access props later use this.props.someAnswer;
+		.then(props => this.props = props);
+	}
 
-	writing: function () {
+	configuring() {
+
+	}
+
+	writing() {
 
 		this.fs.copyTpl(
 			this.templatePath('_package.json'),
@@ -54,12 +63,27 @@ module.exports = Base.extend({
 			this.props
 		);
 
-	},
+		this.fs.copy(
+			this.templatePath('_editorconfig'),
+			this.destinationPath('.editorconfig')
+		);
 
-	projectfiles: function () {
-		this.copy('./_editorconfig', '.editorconfig');
-		this.copy('./_jshintrc', '.jshintrc');
-		this.copy('./_gitignore', '.gitignore');
-		this.copy('./_gitattributes', '.gitattributes');
+		this.fs.copy(
+			this.templatePath('_jshintrc'),
+			this.destinationPath('.jshintrc')
+		);
+
+		this.fs.copy(
+			this.templatePath('_gitignore'),
+			this.destinationPath('.gitignore')
+		);
+
 	}
-});
+
+	install() {
+	}
+
+	end() {
+	}
+
+};

@@ -23,14 +23,11 @@
     "app"
   ],
   "dependencies": {
-    "chalk": "~0.4.0",
-    "yeoman-generator": "~0.24.0",
-    "yosay": "^1.2.0"
+    "chalk": "^0.4.0",
+    "yeoman-generator": "^1.1.1",
+    "yosay": "^1.2.1"
   },
   "devDependencies": {
     "mocha": "*"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
   }
 }

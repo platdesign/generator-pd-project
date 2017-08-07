@@ -1,6 +1,6 @@
 {
   "name": "generator-pd-project",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generator for platdesign projects",
   "license": "MIT",
   "main": "app/index.js",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "release:patch":"npm-release patch"
+    "release:patch": "npm-release patch"
   },
   "keywords": [
     "yeoman-generator"

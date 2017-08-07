@@ -14,7 +14,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "release:patch":"npm-release patch"
   },
   "keywords": [
     "yeoman-generator"
@@ -28,6 +29,7 @@
     "yosay": "^1.2.1"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "npm-release": "^1.0.0"
   }
 }
